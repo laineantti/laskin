@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 function App() {
-  let [naytto, setNaytto] = useState("");
+  const [naytto, setNaytto] = useState("");
 
   // eval käyttö on huono tapa...
 
@@ -30,8 +30,8 @@ function App() {
         </div>
         <div>
           <button onClick={() => setNaytto(naytto + "0")}>0</button>
-          <button onClick={() => setNaytto((naytto = ""))}>C</button>
-          <button onClick={() => setNaytto((naytto = eval(naytto)))}>=</button>
+          <button onClick={() => setNaytto("")}>C</button>
+          <button onClick={() => setNaytto(eval(naytto))}>=</button>
           <button onClick={() => setNaytto(naytto + "+")}>+</button>
         </div>
       </div>
