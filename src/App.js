@@ -1,37 +1,40 @@
-import React from "react"
-import { useState } from "react"
+import React from "react";
+import { useState } from "react";
 
 function App() {
   //array destructuring
-  const [bruttopalkka, setBruttopalkka] = useState(0)
-  const [veroprosentti, setVeroprosentti] = useState(0)
+  const [luku1, setLuku1] = useState(0);
+  const [luku2, setLuku2] = useState(0);
+  let [vastaus, setVastaus] = useState(0);
 
-  const laskeVeronmaara = (event) => {
-    return (bruttopalkka * veroprosentti) / 100
-  }
+  const luku1Muuttunut = (event) => {
+    setLuku1(event.target.value);
+  };
 
-  const palkkaMuuttunut = (event) => {
-    setBruttopalkka(event.target.value)
-  }
-
-  const veroprosMuuttunut = (event) => {
-    setVeroprosentti(event.target.value)
-  }
+  const luku2Muuttunut = (event) => {
+    setLuku2(event.target.value);
+  };
 
   //JSX  //angular
   return (
     <div>
-      <input
-        onChange={(event) => palkkaMuuttunut(event)}
-        value={bruttopalkka}
-      ></input>
-      <input
-        onChange={(event) => veroprosMuuttunut(event)}
-        value={veroprosentti}
-      ></input>
-      <p>{laskeVeronmaara()}</p>
+      <p>{vastaus}</p>
+      <input onChange={(event) => luku1Muuttunut(event)} value={luku1}></input>
+      <input onChange={(event) => luku2Muuttunut(event)} value={luku2}></input>
+      <button onClick={() => setVastaus(parseInt(luku1) + parseInt(luku2))}>
+        +
+      </button>
+      <button onClick={() => setVastaus(parseInt(luku1) - parseInt(luku2))}>
+        -
+      </button>
+      <button onClick={() => setVastaus(parseInt(luku1) * parseInt(luku2))}>
+        *
+      </button>
+      <button onClick={() => setVastaus(parseInt(luku1) / parseInt(luku2))}>
+        /
+      </button>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
