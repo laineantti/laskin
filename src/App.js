@@ -2,37 +2,39 @@ import React from "react";
 import { useState } from "react";
 
 function App() {
-  //array destructuring
-  const [luku1, setLuku1] = useState(0);
-  const [luku2, setLuku2] = useState(0);
-  let [vastaus, setVastaus] = useState(0);
+  let [naytto, setNaytto] = useState("");
 
-  const luku1Muuttunut = (event) => {
-    setLuku1(event.target.value);
-  };
+  // eval käyttö on huono tapa...
 
-  const luku2Muuttunut = (event) => {
-    setLuku2(event.target.value);
-  };
-
-  //JSX  //angular
   return (
     <div>
-      <p>{vastaus}</p>
-      <input onChange={(event) => luku1Muuttunut(event)} value={luku1}></input>
-      <input onChange={(event) => luku2Muuttunut(event)} value={luku2}></input>
-      <button onClick={() => setVastaus(parseInt(luku1) + parseInt(luku2))}>
-        +
-      </button>
-      <button onClick={() => setVastaus(parseInt(luku1) - parseInt(luku2))}>
-        -
-      </button>
-      <button onClick={() => setVastaus(parseInt(luku1) * parseInt(luku2))}>
-        *
-      </button>
-      <button onClick={() => setVastaus(parseInt(luku1) / parseInt(luku2))}>
-        /
-      </button>
+      <div>
+        <input value={naytto}></input>
+        <div>
+          <button onClick={() => setNaytto(naytto + "7")}>7</button>
+          <button onClick={() => setNaytto(naytto + "8")}>8</button>
+          <button onClick={() => setNaytto(naytto + "9")}>9</button>
+          <button onClick={() => setNaytto(naytto + "/")}>/</button>
+        </div>
+        <div>
+          <button onClick={() => setNaytto(naytto + "4")}>4</button>
+          <button onClick={() => setNaytto(naytto + "5")}>5</button>
+          <button onClick={() => setNaytto(naytto + "6")}>6</button>
+          <button onClick={() => setNaytto(naytto + "*")}>*</button>
+        </div>
+        <div>
+          <button onClick={() => setNaytto(naytto + "1")}>1</button>
+          <button onClick={() => setNaytto(naytto + "2")}>2</button>
+          <button onClick={() => setNaytto(naytto + "3")}>3</button>
+          <button onClick={() => setNaytto(naytto + "-")}>-</button>
+        </div>
+        <div>
+          <button onClick={() => setNaytto(naytto + "0")}>0</button>
+          <button onClick={() => setNaytto((naytto = ""))}>C</button>
+          <button onClick={() => setNaytto((naytto = eval(naytto)))}>=</button>
+          <button onClick={() => setNaytto(naytto + "+")}>+</button>
+        </div>
+      </div>
     </div>
   );
 }
